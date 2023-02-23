@@ -10,12 +10,12 @@ import cv2
 
 img =  cv2.imread('P277E.JPG')
 
-#trying to decrease the size of the image
-scale_percent = 35 # percent of original size
-width = int(img.shape[1] * scale_percent / 100)
-height = int(img.shape[0] * scale_percent / 100)
-dim=(width,height)
-img=cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+# #trying to decrease the size of the image
+# scale_percent = 35 # percent of original size
+# width = int(img.shape[1] * scale_percent / 100)
+# height = int(img.shape[0] * scale_percent / 100)
+# dim=(width,height)
+# img=cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
 
 #convert to hsv colourmap
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -45,7 +45,9 @@ res = cv2.bitwise_and(img,img, mask= mask)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
 
-cv2.imshow("original", img)
-cv2.imshow("final image", res)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+# cv2.imshow("original", img)
+# cv2.imshow("final image", res)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+
+cv2.imwrite("masking_v0.1.jpg", res)
