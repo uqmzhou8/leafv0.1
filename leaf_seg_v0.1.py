@@ -20,20 +20,24 @@ img=cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
 #convert to hsv colourmap
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
+#perform a gaussian blurring of the image
+hsv=cv2.blur(hsv, (3,3))
 
 # find the green color in the leaf
 mask_green = cv2.inRange(hsv, (20, 20, 20), (100, 255, 255))
 # find the grey color 
-mask_grey = cv2.inRange(hsv, (200,200,200), (250,255,255))
+mask_grey = cv2.inRange(hsv, (180,180,180), (250,255,255))
 # find the orange color
-mask_orange = cv2.inRange(hsv, (8, 60, 20), (30, 255, 200))
+mask_orange = cv2.inRange(hsv, (8, 60, 20), (100, 255, 255))
 
 
 # find any of the three colors(green or brown or yellow) in the image
 mask = cv2.bitwise_or(mask_green, mask_grey)
 mask = cv2.bitwise_or(mask, mask_orange)
 
-
+# #fill holes in the mask
+# kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(10,10))
+# mask = cv2.morphologyEx(mask,cv2.MORPH_OPEN,kernel)
 
 
 # Bitwise-AND mask and original image
@@ -45,7 +49,9 @@ res = cv2.bitwise_and(img,img, mask= mask)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
 
-cv2.imshow("original", img)
-cv2.imshow("final image", res)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+# cv2.imshow("original", img)
+# cv2.imshow("final image", res)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+
+cv2.imwrite('extracted.jpg', res)
