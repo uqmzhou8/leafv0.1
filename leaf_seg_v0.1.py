@@ -94,4 +94,9 @@ for images in glob.iglob(f'{folder_dir}/*'):
 #printing out the masking for analysis
 
 
+<<<<<<< HEAD
 # from scipy import ndimage as ndi
+=======
+# from scipy import ndimage as ndi
+
+>>>>>>> 6d84e867587d4aba05f1e2a905f57cf2520b1e33
