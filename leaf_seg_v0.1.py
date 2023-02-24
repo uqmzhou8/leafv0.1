@@ -10,23 +10,15 @@ import cv2
 import numpy as np
 # img =  cv2.imread('P313D.JPG')
 
-#perform a gaussian blurring of the image
-hsv=cv2.blur(hsv, (3,3))
 
-<<<<<<< HEAD
+
+
 
 import os
 # os.chdir('imgs')
 #get current dir
 pathdir=os.getcwd()
-=======
-# find the green color in the leaf
-mask_green = cv2.inRange(hsv, (20, 20, 20), (100, 255, 255))
-# find the grey color 
-mask_grey = cv2.inRange(hsv, (180,180,180), (250,255,255))
-# find the orange color
-mask_orange = cv2.inRange(hsv, (8, 60, 20), (100, 255, 255))
->>>>>>> main
+
 
 
 import glob
@@ -105,23 +97,3 @@ for images in glob.iglob(f'{folder_dir}/*'):
 
 # from scipy import ndimage as ndi
 
-<<<<<<< HEAD
-# from skimage.segmentation import watershed
-# from skimage.feature import peak_local_max
-
-# distance = ndi.distance_transform_edt(mask)
-# coords = peak_local_max(distance, footprint=np.ones((5, 5)), labels=mask)
-# mask1 = np.zeros(distance.shape, dtype=bool)
-# mask1[tuple(coords.T)] = True
-# markers, _ = ndi.label(mask1)
-# mask_1 = watershed(-distance, markers, mask=mask)
-
-# cv2.imwrite("mask.jpg", mask_1)
-=======
-# cv2.imshow("original", img)
-# cv2.imshow("final image", res)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
-
-cv2.imwrite('extracted.jpg', res)
->>>>>>> main
